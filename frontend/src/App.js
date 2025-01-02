@@ -1,54 +1,41 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './App.css';  // Ensure this is linked properly for styling
-import BookList from './components/BookList';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
-import { ClipLoader } from 'react-spinners';
+import BookList from './components/BookList';
+import './App.css';
 
 const App = () => {
-  const [query, setQuery] = useState('');
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [startIndex, setStartIndex] = useState(0);
+  const [query, setQuery] = useState('');
 
-  const searchBooks = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10&startIndex=${startIndex}`
-      );
-      setBooks(response.data.items);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+  useEffect(() => {
+    if (query) {
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.items) {
+            setBooks(data.items);
+          } else {
+            setBooks([]);
+          }
+        })
+        .catch((error) => console.error('Error fetching books:', error));
     }
-    setLoading(false);
+  }, [query]);
+
+  const handleSearch = (searchQuery) => {
+    setQuery(searchQuery);
   };
 
-  const handleNext = () => {
-    setStartIndex(startIndex + 10);
-  };
-
-  const handlePrev = () => {
-    if (startIndex > 0) {
-      setStartIndex(startIndex - 10);
-    }
+  const handleClearSearch = () => {
+    setQuery(''); // Clear the query
+    setBooks([]); // Clear the book list
   };
 
   return (
     <div>
-      <SearchBar onSearch={searchBooks} query={query} setQuery={setQuery} />
-
-      {loading ? (
-        <ClipLoader size={50} color="#0000ff" loading={loading} />
-      ) : (
-        <BookList books={books} />
-      )}
-
-      <div>
-        <button onClick={handlePrev} disabled={startIndex === 0}>Previous</button>
-        <button onClick={handleNext}>Next</button>
-      </div>
+      <h1>Google Books Search</h1>
+      <SearchBar onSearch={handleSearch} onClearSearch={handleClearSearch} />
+      <BookList books={books} />
     </div>
   );
 };
