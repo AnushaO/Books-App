@@ -1,4 +1,3 @@
-/* General styles for the entire app */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f9;
@@ -7,7 +6,6 @@ body {
   color: #333;
 }
 
-/* Center the app container */
 .container {
   text-align: center;
   padding: 30px;
@@ -15,21 +13,17 @@ body {
   margin: 0 auto;
 }
 
-/* Title styling */
 h1 {
-  font-size: 3rem; /* Large font size for prominence */
-  color: #3f51b5; /* A nice blue color */
-  text-transform: uppercase; /* Uppercase text for emphasis */
-  font-weight: 700; /* Bold font */
-  letter-spacing: 2px; /* Space between letters */
-  margin-bottom: 30px; /* Space below the title */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  text-align: center; /* Center the title */
+  font-size: 3rem;
+  color: #3f51b5;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-
-
-/* Style for the search bar */
 input[type="text"] {
   padding: 12px 20px;
   margin-top: 20px;
@@ -46,7 +40,6 @@ input[type="text"]:focus {
   box-shadow: 0 0 10px rgba(60, 90, 200, 0.2);
 }
 
-/* Style for the search button */
 button {
   padding: 12px 30px;
   background-color: #3f51b5;
@@ -73,7 +66,6 @@ button:disabled:hover {
   background-color: #b0bec5;
 }
 
-/* Layout for book items */
 ul {
   list-style-type: none;
   padding: 0;
@@ -84,7 +76,6 @@ ul {
   justify-items: center;
 }
 
-/* Style for individual book cards */
 .book-item {
   background-color: white;
   padding: 20px;
@@ -93,7 +84,7 @@ ul {
   max-width: 220px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
-  height: 400px; /* Adjusted for a uniform layout */
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -112,7 +103,6 @@ ul {
   margin-bottom: 15px;
 }
 
-/* Style for the book title */
 .book-item h3 {
   font-size: 18px;
   margin-bottom: 10px;
@@ -123,7 +113,6 @@ ul {
   color: #3f51b5;
 }
 
-/* Style for the author and description */
 .book-item p {
   font-size: 14px;
   color: #555;
@@ -140,10 +129,9 @@ ul {
 }
 
 .book-item p.description {
-  height: 60px; /* Truncate long descriptions */
+  height: 60px;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
   input[type="text"] {
     width: 90%;
@@ -154,7 +142,6 @@ ul {
   }
 }
 
-/* Loading spinner container */
 .spinner {
   margin-top: 50px;
   text-align: center;

@@ -27,8 +27,8 @@ const App = () => {
   };
 
   const handleClearSearch = () => {
-    setQuery(''); // Clear the query
-    setBooks([]); // Clear the book list
+    setQuery(''); 
+    setBooks([]); 
   };
 
   return (

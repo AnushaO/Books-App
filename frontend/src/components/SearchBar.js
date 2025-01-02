@@ -5,7 +5,7 @@ const SearchBar = ({ onSearch, onClearSearch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchQuery); // Trigger the search
+    onSearch(searchQuery); 
   };
 
   const handleChange = (e) => {
@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch, onClearSearch }) => {
     setSearchQuery(value);
 
     if (value === '') {
-      onClearSearch(); // If search query is cleared, reset books
+      onClearSearch(); 
     }
   };
 
@@ -26,7 +26,7 @@ const SearchBar = ({ onSearch, onClearSearch }) => {
         onChange={handleChange}
         onKeyDown={(e) => {
           if (e.key === 'Backspace' && searchQuery === '') {
-            onClearSearch(); // Reset books if the input is cleared with Backspace
+            onClearSearch(); 
           }
         }}
         style={styles.input}
